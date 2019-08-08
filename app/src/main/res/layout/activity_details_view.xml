@@ -21,8 +21,14 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_details_view"/>
-
+    <include layout="@layout/content_details_view" android:id="@+id/include"/>
+    <ImageView
+            android:id="@+id/detail_image_display"
+            android:layout_width="202dp"
+            android:layout_height="304dp"
+            android:setImageURI=""
+            android:baselineAlignBottom="@android:"
+            app:layout_anchorGravity="start|center" app:layout_anchor="@+id/include"/>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"

@@ -32,13 +32,13 @@ class MainActivity : AppCompatActivity() {
     }
     fun createTextView(string: String?, int: Int): TextView {
         val view = TextView(this)
-        view.tag = imageList[int]
+        view.setTag(imageList[int].fileUriString)
         view.text = string
         view.textSize = 24f
 
         view.setOnClickListener {
             val intent = Intent(this, DetailsView::class.java)
-            intent.putExtra("picture", imageList[int].fileUri)
+            intent.putExtra("picture",imageList[int].fileUriString)
             startActivity(intent)
         }
         return view
@@ -53,16 +53,9 @@ class MainActivity : AppCompatActivity() {
             picture_linear_layout.addView(
                 createTextView(imageList[index].fileUriString, index++)
             )
-        } else if (requestCode == 2 && resultCode == RESULT_OK) {
-            // Make sure the request was successful
-            val returnedData = data.getSerializableExtra("object") as ImageData
+        }
 
-            for (i in 0..imageList.size) {
-                if (imageList[i].fileUriString == returnedData.fileUriString) {
-                    imageList[i] = returnedData
-                }
-            }
         }
     }
 
-}
+
